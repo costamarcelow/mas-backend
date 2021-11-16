@@ -32,13 +32,17 @@ var CourseUnit = /** @class */ (function () {
         __metadata("design:type", String)
     ], CourseUnit.prototype, "description", void 0);
     __decorate([
-        (0, typeorm_1.Column)(),
+        (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
-    ], CourseUnit.prototype, "create_at", void 0);
+    ], CourseUnit.prototype, "created_at", void 0);
     __decorate([
         (0, typeorm_1.OneToMany)(function () { return Activy_1.Activy; }, function (activy) { return activy.course_unit; }),
-        __metadata("design:type", Activy_1.Activy)
+        __metadata("design:type", Array)
     ], CourseUnit.prototype, "activies", void 0);
+    CourseUnit = __decorate([
+        (0, typeorm_1.Entity)("course_units"),
+        __metadata("design:paramtypes", [])
+    ], CourseUnit);
     return CourseUnit;
 }());
 exports.CourseUnit = CourseUnit;

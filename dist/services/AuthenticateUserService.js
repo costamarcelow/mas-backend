@@ -51,7 +51,7 @@ var AuthenticateUserService = /** @class */ (function () {
     AuthenticateUserService.prototype.execute = function (_a) {
         var email = _a.email, password = _a.password;
         return __awaiter(this, void 0, void 0, function () {
-            var usersRepository, user, comparePassword, _b, privateKey, expiresIn, token, id, name, emailUser;
+            var usersRepository, user, comparePassword, _b, secret, expiresIn, token, id, name, emailUser;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
@@ -72,8 +72,8 @@ var AuthenticateUserService = /** @class */ (function () {
                                     error: 'incorrect password'
                                 }];
                         }
-                        _b = auth_1.default.jwt, privateKey = _b.privateKey, expiresIn = _b.expiresIn;
-                        token = (0, jsonwebtoken_1.sign)({ "role": "user" }, privateKey, {
+                        _b = auth_1.default.jwt, secret = _b.secret, expiresIn = _b.expiresIn;
+                        token = (0, jsonwebtoken_1.sign)({ "role": "user" }, secret, {
                             //algorithm: 'RS256',
                             subject: user.id,
                             expiresIn: expiresIn
