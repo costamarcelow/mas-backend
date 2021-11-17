@@ -1,38 +1,33 @@
 import { NextFunction, Request, Response } from "express";
-import { verify } from 'jsonwebtoken';
-import authConfig from '../config/auth';
-//import APIError from "../shared/APIError";
-
+import { verify } from "jsonwebtoken";
+import authConfig from "../config/auth";
 
 interface Token {
     sub: string;
     role: string;
 }
 
-export default function authenticated(request: Request, response: Response, next: NextFunction): void {
+export default function authenticated(request: Request, response: Response, next: NextFunction) {
 
-    const headerAuthorization = request.headers.authorization
+    const headerAuthorization = request.headers.authorization;
 
     if (!headerAuthorization) {
-        throw new APIError('JWT token not found', 401)
+        return response.json({
+            error: "Token not found!"
+        })
     }
 
-    const [, token] = headerAuthorization.split(' ');
-
+    const [, token] = headerAuthorization.split(" ");
     const verifyToken = verify(token, authConfig.jwt.secret);
-
     if (!verifyToken) {
         throw new Error();
     }
 
-    const { sub, role } = verifyToken as Token
-
-
+    const { sub, role } = verifyToken as Token;
     request.body.user = {
         id: sub,
         role: role
     }
 
     return next();
-
 }
