@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActivyController = void 0;
 var CreateActivyService_1 = require("../services/CreateActivyService");
-var GetActivyService_1 = require("../services/GetActivyService");
+var GetActiviesService_1 = require("../services/GetActiviesService");
 var ActivyController = /** @class */ (function () {
     function ActivyController() {
     }
@@ -65,7 +65,7 @@ var ActivyController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         userId = request.body.user;
-                        getActivies = new GetActivyService_1.GetActivyService();
+                        getActivies = new GetActiviesService_1.GetActivyService();
                         return [4 /*yield*/, getActivies.execute(userId)];
                     case 1:
                         activies = _a.sent();

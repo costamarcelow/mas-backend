@@ -43,13 +43,13 @@ var AuthenticateController = /** @class */ (function () {
     }
     AuthenticateController.prototype.create = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var authData, authenticateUser, auth;
+            var authData, createAuth, auth;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         authData = request.body;
-                        authenticateUser = new AuthenticateUserService_1.AuthenticateUserService();
-                        return [4 /*yield*/, authenticateUser.execute(authData)];
+                        createAuth = new AuthenticateUserService_1.AuthenticateUserService();
+                        return [4 /*yield*/, createAuth.execute(authData)];
                     case 1:
                         auth = _a.sent();
                         return [2 /*return*/, response.json(auth)];

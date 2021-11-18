@@ -37,7 +37,7 @@ var User = /** @class */ (function () {
     __decorate([
         (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
-    ], User.prototype, "create_at", void 0);
+    ], User.prototype, "created_at", void 0);
     __decorate([
         (0, typeorm_1.UpdateDateColumn)(),
         __metadata("design:type", Date)

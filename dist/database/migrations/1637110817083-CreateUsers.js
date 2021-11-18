@@ -36,33 +36,56 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetCourseUnitsService = void 0;
+exports.CreateUsers1637110817083 = void 0;
 var typeorm_1 = require("typeorm");
-var CourseUnit_1 = require("../models/CourseUnit");
-var GetCourseUnitsService = /** @class */ (function () {
-    function GetCourseUnitsService() {
+var CreateUsers1637110817083 = /** @class */ (function () {
+    function CreateUsers1637110817083() {
     }
-    GetCourseUnitsService.prototype.execute = function (_a) {
-        var id = _a.id;
+    CreateUsers1637110817083.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
-            var courseUnitRepository, courseUnits;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        courseUnitRepository = (0, typeorm_1.getRepository)(CourseUnit_1.CourseUnit);
-                        return [4 /*yield*/, courseUnitRepository.find()];
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
+                            name: "users",
+                            columns: [
+                                {
+                                    name: "id",
+                                    type: "varchar",
+                                    isPrimary: true
+                                },
+                                {
+                                    name: "name",
+                                    type: "varchar"
+                                },
+                                {
+                                    name: "email",
+                                    type: "varchar"
+                                },
+                                {
+                                    name: "password",
+                                    type: "varchar"
+                                },
+                                {
+                                    name: "created_at",
+                                    type: "timestamp",
+                                    default: "now()",
+                                }
+                            ]
+                        }))];
                     case 1:
-                        courseUnits = _b.sent();
-                        if (!courseUnits) {
-                            return [2 /*return*/, {
-                                    message: 'courses units not found'
-                                }];
-                        }
-                        return [2 /*return*/, courseUnits];
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return GetCourseUnitsService;
+    CreateUsers1637110817083.prototype.down = function (queryRunner) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
+    return CreateUsers1637110817083;
 }());
-exports.GetCourseUnitsService = GetCourseUnitsService;
+exports.CreateUsers1637110817083 = CreateUsers1637110817083;

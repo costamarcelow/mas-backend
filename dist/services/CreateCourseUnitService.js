@@ -44,25 +44,25 @@ var CreateCourseUnitService = /** @class */ (function () {
     }
     CreateCourseUnitService.prototype.execute = function (data) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, description, courseUnitRespository, checkCourseUnitExists, courseUnit;
+            var name, description, courseUnitRepository, checkCourseUnitExists, courseUnit;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = data.name, description = data.description;
-                        courseUnitRespository = (0, typeorm_1.getRepository)(CourseUnit_1.CourseUnit);
-                        return [4 /*yield*/, courseUnitRespository.findOne({ name: name })];
+                        courseUnitRepository = (0, typeorm_1.getRepository)(CourseUnit_1.CourseUnit);
+                        return [4 /*yield*/, courseUnitRepository.findOne({ name: name })];
                     case 1:
                         checkCourseUnitExists = _a.sent();
                         if (checkCourseUnitExists) {
                             return [2 /*return*/, {
-                                    error: "Course Unit already exist"
+                                    error: "Course Unit already exists!"
                                 }];
                         }
-                        courseUnit = courseUnitRespository.create({
+                        courseUnit = courseUnitRepository.create({
                             name: name,
                             description: description
                         });
-                        return [4 /*yield*/, courseUnitRespository.save(courseUnit)];
+                        return [4 /*yield*/, courseUnitRepository.save(courseUnit)];
                     case 2:
                         _a.sent();
                         return [2 /*return*/, courseUnit];

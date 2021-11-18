@@ -36,17 +36,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateCourseUnits1637181726017 = void 0;
+exports.CreateActivies1637110850954 = void 0;
 var typeorm_1 = require("typeorm");
-var CreateCourseUnits1637181726017 = /** @class */ (function () {
-    function CreateCourseUnits1637181726017() {
+var CreateActivies1637110850954 = /** @class */ (function () {
+    function CreateActivies1637110850954() {
     }
-    CreateCourseUnits1637181726017.prototype.up = function (queryRunner) {
+    CreateActivies1637110850954.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
-                            name: "course_units",
+                            name: "activies",
                             columns: [
                                 {
                                     name: "id",
@@ -58,7 +58,15 @@ var CreateCourseUnits1637181726017 = /** @class */ (function () {
                                     type: "varchar",
                                 },
                                 {
-                                    name: "description",
+                                    name: "activy_date",
+                                    type: "timestamp",
+                                },
+                                {
+                                    name: "grade",
+                                    type: "decimal",
+                                },
+                                {
+                                    name: "courseUnitId",
                                     type: "varchar",
                                 },
                                 {
@@ -67,6 +75,14 @@ var CreateCourseUnits1637181726017 = /** @class */ (function () {
                                     default: "now()",
                                 }
                             ]
+                            //                foreignKeys: [
+                            //                    {
+                            //                        name: "ActivyCourseUnit",
+                            //                        referencedTableName: "course_units",
+                            //                        referencedColumnNames: ["id"],
+                            //                        columnNames: ["courseUnitId"]
+                            //                    }
+                            //                ]
                         }))];
                     case 1:
                         _a.sent();
@@ -75,18 +91,13 @@ var CreateCourseUnits1637181726017 = /** @class */ (function () {
             });
         });
     };
-    CreateCourseUnits1637181726017.prototype.down = function (queryRunner) {
+    CreateActivies1637110850954.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.dropTable("course_units")];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                return [2 /*return*/];
             });
         });
     };
-    return CreateCourseUnits1637181726017;
+    return CreateActivies1637110850954;
 }());
-exports.CreateCourseUnits1637181726017 = CreateCourseUnits1637181726017;
+exports.CreateActivies1637110850954 = CreateActivies1637110850954;

@@ -42,6 +42,15 @@ var Activy_1 = require("../models/Activy");
 var CreateActivyService = /** @class */ (function () {
     function CreateActivyService() {
     }
+    //    public async execute(data: ActivyData) {
+    //        const { name, activy_date, grade, courseUnitId } = data;
+    //        const activyRepository = getRepository(Activy);
+    //        const checkActivyToCourseUnitExists = await activyRepository.findOne({ name, courseUnitId });
+    //        if (checkActivyToCourseUnitExists) {
+    //            return {
+    //                error: "Activy to Course already exists!"
+    //            }
+    //        }
     CreateActivyService.prototype.execute = function (_a) {
         var name = _a.name, activy_date = _a.activy_date, grade = _a.grade, courseUnitId = _a.courseUnitId;
         return __awaiter(this, void 0, void 0, function () {

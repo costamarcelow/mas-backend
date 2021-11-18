@@ -36,61 +36,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUsers1636805955562 = void 0;
+exports.GetActivyService = void 0;
 var typeorm_1 = require("typeorm");
-var CreateUsers1636805955562 = /** @class */ (function () {
-    function CreateUsers1636805955562() {
+var Activy_1 = require("../models/Activy");
+var GetActivyService = /** @class */ (function () {
+    function GetActivyService() {
     }
-    CreateUsers1636805955562.prototype.up = function (queryRunner) {
+    GetActivyService.prototype.execute = function (_a) {
+        var id = _a.id;
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
-                            name: "users",
-                            columns: [
-                                {
-                                    name: "id",
-                                    type: "varchar",
-                                    isPrimary: true
-                                },
-                                {
-                                    name: "name",
-                                    type: "varchar"
-                                },
-                                {
-                                    name: "email",
-                                    type: "varchar"
-                                },
-                                {
-                                    name: "password",
-                                    type: "varchar",
-                                },
-                                {
-                                    name: "create_at",
-                                    type: "timestamp",
-                                    default: "now()",
-                                }
-                            ]
-                        }))];
+            var activyRepository, activies;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        console.log('Id do usuário da atividade: ' + id);
+                        activyRepository = (0, typeorm_1.getRepository)(Activy_1.Activy);
+                        return [4 /*yield*/, activyRepository.find({ relations: ["course_unit"] })];
                     case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                        activies = _b.sent();
+                        if (!activies) {
+                            return [2 /*return*/, {
+                                    message: "activies not found"
+                                }];
+                        }
+                        return [2 /*return*/, activies];
                 }
             });
         });
     };
-    CreateUsers1636805955562.prototype.down = function (queryRunner) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.dropTable("users")];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return CreateUsers1636805955562;
+    return GetActivyService;
 }());
-exports.CreateUsers1636805955562 = CreateUsers1636805955562;
+exports.GetActivyService = GetActivyService;

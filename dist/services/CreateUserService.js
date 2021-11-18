@@ -37,37 +37,37 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserService = void 0;
-var User_1 = require("../models/User");
-var typeorm_1 = require("typeorm");
 var bcryptjs_1 = require("bcryptjs");
+var typeorm_1 = require("typeorm");
+var User_1 = require("../models/User");
 var CreateUserService = /** @class */ (function () {
     function CreateUserService() {
     }
     CreateUserService.prototype.execute = function (data) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, email, password, usersRepository, checkUserExists, hashedPassword, user;
+            var name, email, password, userRepository, checkUserExists, hashedPassword, user;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = data.name, email = data.email, password = data.password;
-                        usersRepository = (0, typeorm_1.getRepository)(User_1.User);
-                        return [4 /*yield*/, usersRepository.findOne({ email: email })];
+                        userRepository = (0, typeorm_1.getRepository)(User_1.User);
+                        return [4 /*yield*/, userRepository.findOne({ email: email })];
                     case 1:
                         checkUserExists = _a.sent();
                         if (checkUserExists) {
                             return [2 /*return*/, {
-                                    error: 'Email adress alread exist'
+                                    error: "Email address already exists!"
                                 }];
                         }
                         return [4 /*yield*/, (0, bcryptjs_1.hash)(password, 8)];
                     case 2:
                         hashedPassword = _a.sent();
-                        user = usersRepository.create({
+                        user = userRepository.create({
                             name: name,
                             email: email,
                             password: hashedPassword
                         });
-                        return [4 /*yield*/, usersRepository.save(user)];
+                        return [4 /*yield*/, userRepository.save(user)];
                     case 3:
                         _a.sent();
                         return [2 /*return*/, user];
