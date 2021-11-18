@@ -48,7 +48,7 @@ export class CreateActivities1637067384690 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
 
-        await queryRunner.dropTable("activy");
+        await queryRunner.dropTable("activies");
     }
 
 }

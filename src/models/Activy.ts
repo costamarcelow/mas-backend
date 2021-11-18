@@ -33,7 +33,7 @@ class Activy {
   updated_at: Date;
 
   @ManyToOne(() => CourseUnit, course_unit => course_unit.activies)
-  @JoinColumn()
+  @JoinTable()
   course_unit: CourseUnit
 }
 
