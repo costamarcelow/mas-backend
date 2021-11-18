@@ -37,7 +37,7 @@ export class CreateActivities1637067384690 implements MigrationInterface {
                 foreignKeys: [
                     {
                         name: 'ActivyCourseUnit',
-                        referencedTableName: 'courseunits',
+                        referencedTableName: 'course_units',
                         referencedColumnNames: ['id'],
                         columnNames: ['courseUnitId']
                     }
