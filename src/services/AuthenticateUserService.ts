@@ -1,23 +1,23 @@
-import {getRepository} from 'typeorm';
-import {sign} from 'jsonwebtoken';
-import {compare} from 'bcryptjs';
+import { getRepository } from 'typeorm';
+import { sign } from 'jsonwebtoken';
+import { compare } from 'bcryptjs';
 import authConfig from '../config/auth';
-import {User} from '../models/User';
+import { User } from '../models/User';
 
 interface AuthData {
     email: string;
     password: string;
 }
 
-class AuthenticateUserService{
+class AuthenticateUserService {
 
-    public async execute({email,password}: AuthData): Promise<string | {}> {
+    public async execute({ email, password }: AuthData): Promise<String | {}> {
 
         const usersRepository = getRepository(User);
 
-        const user = await usersRepository.findOne({email});
+        const user = await usersRepository.findOne({ email });
 
-        if(!user) {
+        if (!user) {
             return {
                 error: 'user not exist'
             }
@@ -25,24 +25,26 @@ class AuthenticateUserService{
 
         const comparePassword = await compare(password, user.password);
 
-        if(!comparePassword) {
+        if (!comparePassword) {
             return {
                 error: 'incorrect password'
             }
         }
 
+        //const { privateKey, expiresIn } = authConfig.jwt;
         const { secret, expiresIn } = authConfig.jwt;
 
-        const token = sign({"role":"user"}, secret, {
+        //const token = sign({ "role": "user" }, privateKey, {
+        const token = sign({ "role": "user" }, secret, {
             //algorithm: 'RS256',
             subject: user.id,
             expiresIn
         })
 
-        const {id, name, email:emailUser} = user
+        const { id, name, email: emailUser } = user
 
         return {
-            user:{
+            user: {
                 id,
                 name,
                 email: emailUser
@@ -53,4 +55,4 @@ class AuthenticateUserService{
 
 }
 
-export {AuthenticateUserService};
+export { AuthenticateUserService };

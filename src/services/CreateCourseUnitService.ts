@@ -2,33 +2,31 @@ import { getRepository } from "typeorm";
 import { CourseUnit } from "../models/CourseUnit";
 
 interface CourseUnitData {
-  name: string;
-  description: string;
+    name: string;
+    description: string;
 }
 
 class CreateCourseUnitService {
-  public async execute(data: CourseUnitData) {
-    const { name, description } = data;
+    public async execute(data: CourseUnitData) {
+        const { name, description } = data;
+        const courseUnitRepository = getRepository(CourseUnit);
+        const checkCourseUnitExists = await courseUnitRepository.findOne({ name });
 
-    const courseUnitRespository = getRepository(CourseUnit);
+        if (checkCourseUnitExists) {
+            return {
+                error: "Course Unit already exists!"
+            }
+        }
 
-    const checkCourseUnitExists = await courseUnitRespository.findOne({ name });
+        const courseUnit = courseUnitRepository.create({
+            name,
+            description
+        });
 
-    if (checkCourseUnitExists) {
-      return {
-        error: "Course Unit already exist"
-      }
+        await courseUnitRepository.save(courseUnit);
+
+        return courseUnit;
     }
-
-    const courseUnit = courseUnitRespository.create({
-      name,
-      description
-    });
-
-    await courseUnitRespository.save(courseUnit);
-
-    return courseUnit;
-  }
 }
 
 export { CreateCourseUnitService };

@@ -1,26 +1,26 @@
 import { getRepository } from "typeorm";
 import { CourseUnit } from "../models/CourseUnit";
 
-interface UserId {
-  id?: string
+interface UserId{
+    id?:string;
 }
 
-class GetCourseUnitsService {
+class GetCourseUnitsService{
 
-  public async execute(data: UserId) {
+    public async execute({id}:UserId){
 
-    const courseUnitRepository = getRepository(CourseUnit);
+        const courseUnitRepository = getRepository(CourseUnit);
 
-    const courseUnits = await courseUnitRepository.find();
+        const courseUnits = await courseUnitRepository.find();
 
-    if (!courseUnits) {
-      return {
-        message: 'courses units not found'
-      }
+        if(!courseUnits){
+            return {
+                message:'courses units not found'
+            }
+        }
+
+        return courseUnits;
     }
-
-    return courseUnits;
-  }
 }
 
-export { GetCourseUnitsService }
+export {GetCourseUnitsService};
