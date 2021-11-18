@@ -44,8 +44,12 @@ var Activy = /** @class */ (function () {
         __metadata("design:type", Date)
     ], Activy.prototype, "created_at", void 0);
     __decorate([
+        (0, typeorm_1.UpdateDateColumn)(),
+        __metadata("design:type", Date)
+    ], Activy.prototype, "updated_at", void 0);
+    __decorate([
         (0, typeorm_1.ManyToOne)(function () { return CourseUnit_1.CourseUnit; }, function (course_unit) { return course_unit.activies; }),
-        (0, typeorm_1.JoinTable)(),
+        (0, typeorm_1.JoinColumn)(),
         __metadata("design:type", CourseUnit_1.CourseUnit)
     ], Activy.prototype, "course_unit", void 0);
     Activy = __decorate([

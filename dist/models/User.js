@@ -35,9 +35,13 @@ var User = /** @class */ (function () {
         __metadata("design:type", String)
     ], User.prototype, "password", void 0);
     __decorate([
-        (0, typeorm_1.Column)(),
+        (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
     ], User.prototype, "create_at", void 0);
+    __decorate([
+        (0, typeorm_1.UpdateDateColumn)(),
+        __metadata("design:type", Date)
+    ], User.prototype, "updated_at", void 0);
     User = __decorate([
         (0, typeorm_1.Entity)('users'),
         __metadata("design:paramtypes", [])

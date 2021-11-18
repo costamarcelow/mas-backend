@@ -36,6 +36,10 @@ var CourseUnit = /** @class */ (function () {
         __metadata("design:type", Date)
     ], CourseUnit.prototype, "created_at", void 0);
     __decorate([
+        (0, typeorm_1.UpdateDateColumn)(),
+        __metadata("design:type", Date)
+    ], CourseUnit.prototype, "updated_at", void 0);
+    __decorate([
         (0, typeorm_1.OneToMany)(function () { return Activy_1.Activy; }, function (activy) { return activy.course_unit; }),
         __metadata("design:type", Array)
     ], CourseUnit.prototype, "activies", void 0);

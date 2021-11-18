@@ -22,7 +22,7 @@ class User {
   @Column()
   password: string;
 
-  @Column()
+  @CreateDateColumn()
   create_at: Date;
 
   @UpdateDateColumn()
